@@ -50,14 +50,16 @@ menu = {
     }
 }
 
-dashes = "-" * 50
+dashes = "-" * 42
 
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered (I THINK THIS IS DONE, SEEMS TOO EASY)
 order_list = []
 
 # Launch the store and present a greeting to the customer
+print(dashes)
 print("Welcome to Brandon's food truck.")
+print(dashes)
 
 # Customers may want to order multiple items, so let's create a continuous
 # loop
@@ -65,6 +67,7 @@ place_order = True
 while place_order:
     # Ask the customer from which menu category they want to order
     print("From which menu would you like to order? ")
+    print(dashes)
 
     # Create a variable for the menu item number
     i = 1
@@ -81,24 +84,30 @@ while place_order:
         i += 1
 
     # Get the customer's input
+    print(dashes)
     menu_category = input("Type menu number: ")
 
     # Check if the customer's input is a number
     if menu_category.isdigit():
+        
         # Check if the customer's input is a valid option
         if int(menu_category) in menu_items.keys():
+
             # Save the menu category name to a variable
             menu_category_name = menu_items[int(menu_category)]
+
             # Print out the menu category name they selected
             print(f"You selected {menu_category_name}")
 
             # Print out the menu options from the menu_category_name
             print(f"What {menu_category_name} item would you like to order?")
+            print(dashes)
             i = 1
             menu_items = {}
             print("Item # | Item name                | Price")
             print("-------|--------------------------|-------")
             for key, value in menu[menu_category_name].items():
+
                 # Check if the menu item is a dictionary to handle differently
                 if type(value) is dict:
                     for key2, value2 in value.items():
@@ -119,7 +128,9 @@ while place_order:
                         "Price": value
                     }
                     i += 1
+
             # 2. Ask customer to input menu item number (THIS IS DONE)
+            print(dashes)
             menu_selection = input("Choose an item: ")
 
             # 3. Check if the customer typed a number (THIS IS DONE)
@@ -162,7 +173,9 @@ while place_order:
         # Tell the customer they didn't select a number (THIS IS DONE)
         print(f"Sorry, {menu_category} is not a number. Please select a number")
 
-    #uncomment this line while testing appended list (TODO)
+    #uncomment this line while testing appended list
+    #Brandon's note: I hijacked this and I like what it's doing so it's staying, cope.
+    print(dashes)
     print(f"Your current cart contains: {order_list}")
 
     options = ["y", "n"]
@@ -184,6 +197,7 @@ while place_order:
 
                 # Since the customer decided to stop ordering, thank them for
                 # their order
+                    print(dashes)
                     print("Thank you for your order!")
                 # Exit the keep ordering question loop
                     break
@@ -197,11 +211,12 @@ print("This is what we are preparing for you:\n")
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
-# 6. Loop through the items in the customer's order (TODO)
-#for i in order_list:
+# 6. Loop through the items in the customer's order (THIS IS DONE)
+for order in order_list:
     # 7. Store the dictionary items as variables
-
-
+    OrderedItem = order["Item"]
+    OrderedPrice = order["Price"]
+    OrderedQuantity = order["Quantity"]
 
     # 8. Calculate the number of spaces for formatted printing
 
@@ -209,8 +224,10 @@ print("--------------------------|--------|----------")
     # 9. Create space strings
 
 
-    # 10. Print the item name, price, and quantity
-
+    # 10. Print the item name, price, and quantity (TODO) PLACEHOLDER CODE IN HERE, DON'T LEAVE IT
+print(OrderedItem)
+print(OrderedPrice)
+print(OrderedQuantity)
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
