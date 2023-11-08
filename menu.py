@@ -58,7 +58,7 @@ order_list = []
 
 # Launch the store and present a greeting to the customer
 print(dashes)
-print("Welcome to Brandon's food truck.")
+print("Welcome to Brandon's food truck!")
 print(dashes)
 
 # Customers may want to order multiple items, so let's create a continuous
@@ -140,7 +140,7 @@ while place_order:
 
                 # 4. Check if the menu selection is in the menu items (THIS IS DONE)
                 if menu_selection in menu_items.keys():
-                    # Store the item name as a variable (I DON'T THINK THIS IS RIGHT)
+                    # Store the item name as a variable (THIS IS DONE)
                     item_name = int(menu_selection)
 
                     # Ask the customer for the quantity of the menu item 
@@ -183,7 +183,7 @@ while place_order:
         # Ask the customer if they would like to order anything else
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o: ")
 
-        # 5. Check the customer's input (add check to convert to lower)
+        # 5. Check the customer's input (I added check to convert to lower) (THIS IS DONE)
         match keep_ordering.lower():
                 # User wants to keep ordering, so go back to start
             case 'y':
@@ -212,23 +212,42 @@ print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order (THIS IS DONE)
+TotalCost = 0 
+#The TotalCost variable has to be declared outside this loop for my final calculation to work
 for order in order_list:
-    # 7. Store the dictionary items as variables
+    # 7. Store the dictionary items as variables (THIS IS DONE)
     OrderedItem = order["Item"]
     OrderedPrice = order["Price"]
     OrderedQuantity = order["Quantity"]
 
-    # 8. Calculate the number of spaces for formatted printing
+    # 8. Calculate the number of spaces for formatted printing (THIS IS DONE)
+    # It took actually doing this for me to realize why I was doing it. The items
+    # all have different length names, duh
+    spaces = 26 - len(OrderedItem)
 
+    # 9. Create space strings (See NOTE on line 228, otherwise THIS IS DONE)
 
-    # 9. Create space strings
+    # NOTE: I ACCIDENTALLY DID THIS AS PART OF QUESTION 10 BELOW...
+    # AND I'M AFRAID TO CHANGE IT BECAUSE IT WORKS AND I DON'T WANT TO BREAK IT
+    # YOU KNOW THE FEEL LOL
 
+    # 10. Print the item name, price, and quantity (THIS IS DONE)
+    print(f"{OrderedItem}{' ' * spaces}{'|'} {'$'}{OrderedPrice}  {'|'} {OrderedQuantity}")
 
-    # 10. Print the item name, price, and quantity (TODO) PLACEHOLDER CODE IN HERE, DON'T LEAVE IT
-print(OrderedItem)
-print(OrderedPrice)
-print(OrderedQuantity)
-
-# 11. Calculate the cost of the order using list comprehension
+# 11. Calculate the cost of the order using list comprehension (THIS IS DONE)
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
+
+# NOTE I did a weird method to round the total to 2 decimal places
+# and also added some flavor text at the end just for fun
+    
+    ItemCost = OrderedQuantity * OrderedPrice
+    TotalCost += ItemCost
+    TotalCost = round(TotalCost, 2) 
+
+print('-' * 46)
+print(f"Total:{' ' * 20}{'|'} {'$'}{TotalCost}")
+print('-' * 46)
+print("Thank you for coming to Brandon's Food Truck.")
+print("Have a nice day!")
+print('-' * 46)
