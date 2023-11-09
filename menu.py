@@ -50,7 +50,7 @@ menu = {
     }
 }
 
-dashes = "-" * 42
+dashes = "-" * 46
 
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered (I THINK THIS IS DONE, SEEMS TOO EASY)
@@ -105,7 +105,7 @@ while place_order:
             i = 1
             menu_items = {}
             print("Item # | Item name                | Price")
-            print("-------|--------------------------|-------")
+            print("-------|--------------------------|-----------")
             for key, value in menu[menu_category_name].items():
 
                 # Check if the menu item is a dictionary to handle differently
@@ -183,7 +183,7 @@ while place_order:
         # Ask the customer if they would like to order anything else
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o: ")
 
-        # 5. Check the customer's input (I added check to convert to lower) (THIS IS DONE)
+        # 5. Check the customer's input (I added a simple inline check to convert to lower) (THIS IS DONE)
         match keep_ordering.lower():
                 # User wants to keep ordering, so go back to start
             case 'y':
@@ -213,7 +213,7 @@ print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order (THIS IS DONE)
 TotalCost = 0 
-#The TotalCost variable has to be declared outside this loop for my final calculation to work
+# The TotalCost variable has to be declared outside this loop for my final calculation to work
 for order in order_list:
     # 7. Store the dictionary items as variables (THIS IS DONE)
     OrderedItem = order["Item"]
@@ -225,7 +225,7 @@ for order in order_list:
     # all have different length names, duh
     spaces = 26 - len(OrderedItem)
 
-    # 9. Create space strings (See NOTE on line 228, otherwise THIS IS DONE)
+    # 9. Create space strings (See NOTE below, otherwise THIS IS DONE)
 
     # NOTE: I ACCIDENTALLY DID THIS AS PART OF QUESTION 10 BELOW...
     # AND I'M AFRAID TO CHANGE IT BECAUSE IT WORKS AND I DON'T WANT TO BREAK IT
